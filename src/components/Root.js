@@ -1,14 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { Router, browserHistory } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import routes from '../routes';
 
 
 const Root = ({ store }) => {
+
+  console.log(store)
   return (
     <Provider store={store}>
-      <Router history={browserHistory} routes={routes} />
+      <BrowserRouter>
+        {routes}
+      </BrowserRouter>
     </Provider>
   );
 }

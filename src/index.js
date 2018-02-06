@@ -5,9 +5,11 @@ import { createStore, applyMiddleware } from 'redux';
 
 import Root from './components/Root';
 
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
+
 
 ReactDOM.render(
   <Root store={createStoreWithMiddleware(reducers)} />,
-  document.getElementById('container')
+  document.querySelector('.container')
 );
