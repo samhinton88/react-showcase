@@ -1,0 +1,13 @@
+body {
+    padding-top: 50px
+}
+
+.navbar-nav {
+  flex-direction: row;
+  margin-right: 5px;
+
+}
+
+a {
+  color: darkgrey;
+}

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import NavbarHeader from './NavbarHeader';
+
+
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h3>Sam Hinton</h3>
+        <NavbarHeader />
         <button />
         {this.props.children}
       </div>

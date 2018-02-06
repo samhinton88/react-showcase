@@ -14,11 +14,10 @@ import reducers from '../src/reducers';
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
 
-
 // configure jquery to access fake DOM
 const $ = _$(global.window);
 
-// function to render react Class
+// function to render React Class
 function renderComponent(ComponentClass, props = {}, state = {}) {
 
   // render into DOM node in document
