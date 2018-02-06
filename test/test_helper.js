@@ -3,16 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import jsdom from 'jsdom';
 import _$ from 'jquery';
-import TestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
+import TestUtils  from 'react-dom/test-utils';
+import chai, { expect } from 'chai';
 import chaiJquery from 'chai-jquery';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../src/reducers';
 
-// emulate browser
+// emulate browser -> jsdom@8.x plays nicely with this config
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
+
 
 // configure jquery to access fake DOM
 const $ = _$(global.window);
