@@ -4,7 +4,9 @@ class LandingArea extends Component {
 
   render() {
     return (
-      <div>LandingArea</div>
+      <div className='landing-area'>
+        LandingArea
+      </div>
     )
   }
 }
