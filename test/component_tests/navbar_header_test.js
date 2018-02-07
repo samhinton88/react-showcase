@@ -10,5 +10,5 @@ describe('NavbarHeader', () => {
 
   it('exists', () => {
     expect(component).to.exist;
-  })
+  });
 })
