@@ -1,4 +1,5 @@
 // test suite emulates browser in command line
+// an alternative rig to Enzyme
 import React from 'react';
 import ReactDOM from 'react-dom';
 import jsdom from 'jsdom';

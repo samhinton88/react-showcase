@@ -17,10 +17,13 @@ describe('App', () => {
     expect(component).to.contain('React');
   })
 
-  it('has a button', () => {
-    expect(component.find('button')).to.exist;
+  it('shows a dashboard', () => {
+    expect(component.find('dashboard')).to.exist;
   })
 
+  it('shows a button', () => {
+    expect(component.find('button')).to.exist;
+  })
   it('has a navbar', () => {
     expect(component.find('nav')).to.exist;
   })
@@ -28,4 +31,17 @@ describe('App', () => {
   it('has a navbar which contains the word "React"', () => {
     expect(component.find('nav')).to.contain('React');
   })
+
+  describe('button', () => {
+    it('has a class of nav-theme-toggle', () => {
+      expect(component.find('button')).to.have.class('nav-theme-toggle')
+    })
+
+    it('changes the theme of the navbar', () => {
+      component.find('.nav-theme-toggle').simulate('click');
+      expect(component.find('nav')).to.have.class('navbar-inverse')
+    })
+  })
+
+
 })

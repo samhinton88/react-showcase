@@ -8,9 +8,12 @@ import {
 } from 'react-bootstrap';
 
 class NavbarHeader extends Component {
+
+
   render() {
+
     return (
-      <Navbar>
+      <Navbar inverse={this.props.inverse}>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#">Sam Hinton - React</a>

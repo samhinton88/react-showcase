@@ -25,7 +25,7 @@ describe('Dashboard', () => {
     expect(component).to.have.class('grid');
   });
 
-  it('contains cards', () => {
-    console.log(component.find('div'))
+  it('contains three cards', () => {
+    expect(component.find('.card').length).to.equal(3)
   })
 })
