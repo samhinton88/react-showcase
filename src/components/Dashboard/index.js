@@ -6,9 +6,19 @@ class Dashboard extends Component {
     return (
       <div className='dashboard'>
         <h2>Dashboard</h2>
-        <div className="card">Card</div>
-        <div className="card">Card</div>
-        <div className="card">Card</div>
+        <div className='dashboard-main'>
+          <div className="card">Card</div>
+          <div className="card">Card</div>
+          <div className="card">Card</div>
+
+          <div className="card">Card</div>
+          <div className="card">Card</div>
+          <div className="card">Card</div>
+
+          <div className="card">Card</div>
+          <div className="card">Card</div>
+          <div className="card">Card</div>
+        </div>
       </div>
     )
   }

@@ -16,8 +16,10 @@ class App extends Component {
         <NavbarHeader inverse={this.state.navThemeInverse}/>
         <button
           onClick={() => this.setState({navThemeInverse: !this.state.navThemeInverse})}
-          className='nav-theme-toggle'
-        />
+          className='nav-theme-toggle btn-primary'
+        >
+          Change my Nav
+        </button>
         {this.props.children}
       </div>
     )

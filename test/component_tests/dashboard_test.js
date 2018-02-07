@@ -25,7 +25,7 @@ describe('Dashboard', () => {
     expect(component).to.have.css('display', 'grid');
   });
 
-  it('contains three cards', () => {
-    expect(component.find('.card').length).to.equal(3)
+  it('contains nine cards', () => {
+    expect(component.find('.card').length).to.equal(9)
   })
 })
