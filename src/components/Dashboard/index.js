@@ -4,11 +4,11 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className='dashboard'>
         <h2>Dashboard</h2>
-        <div className="card"></div>
-        <div className="card"></div>
-        <div className="card"></div>
+        <div className="card">Card</div>
+        <div className="card">Card</div>
+        <div className="card">Card</div>
       </div>
     )
   }

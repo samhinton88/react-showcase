@@ -21,8 +21,8 @@ describe('Dashboard', () => {
     expect(component).to.have.css('background-color', colorSpec.secondaryColor)
   })
 
-  it('is a grid', () => {
-    expect(component).to.have.class('grid');
+  it('is a css grid', () => {
+    expect(component).to.have.css('display', 'grid');
   });
 
   it('contains three cards', () => {

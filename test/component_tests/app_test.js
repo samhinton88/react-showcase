@@ -41,6 +41,12 @@ describe('App', () => {
       component.find('.nav-theme-toggle').simulate('click');
       expect(component.find('nav')).to.have.class('navbar-inverse')
     })
+
+    it('changes the theme of the navbar back when clicked again', () => {
+      component.find('.nav-theme-toggle').simulate('click');
+      component.find('.nav-theme-toggle').simulate('click');
+      expect(component.find('nav')).to.have.class('navbar-default')
+    })
   })
 
 

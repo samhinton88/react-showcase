@@ -11,3 +11,8 @@ body {
 a {
   color: darkgrey;
 }
+
+.dashboard {
+  background-color: #fafafa;
+  display: grid
+}
