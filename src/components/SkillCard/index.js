@@ -8,10 +8,11 @@ class SkillCard extends Component {
     if (!style) {
       return {backgroundColor: '#fff'}
     }
-    const duration = String(xPos + yPos)
-    return {
 
-      animationName: 'example',
+    const dist = xPos + yPos;
+    const duration = String((dist + 1 * (dist)) + 2 );
+    return {
+      animationName: 'skillWave',
       animationDuration: duration + 's'
     }
   }
