@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import SkillCard from '../SkillCard';
-import data from './db'
+import data from './db';
+
 
 class Dashboard extends Component {
   state = {
     skillData: data,
+    focusItem: null
   }
 
 
   renderSkillCards() {
-
-
     const skillCards = this.state.skillData.map((skill, index) => {
 
       const xPos = index % 3;
@@ -35,7 +35,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className='dashboard'>
-        <h2>Dashboard</h2>
+        <h2 style={{color: 'black'}}>Dashboard</h2>
         <div className='dashboard-main'>
           {this.renderSkillCards()}
         </div>

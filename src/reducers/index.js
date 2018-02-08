@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import focusReducer from './focus_reducer'
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  skill: focusReducer
 });
 
 export default rootReducer;

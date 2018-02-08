@@ -20,11 +20,4 @@ describe('SkillCard', () => {
     expect(component.find('h3')).to.exist;
   });
 
-  it('contains two divs', () => {
-    expect(component.find('div').length).to.equal(2);
-  })
-
-  it('contains an image tag', () => {
-    expect(component.find('img')).to.exist;
-  })
 })

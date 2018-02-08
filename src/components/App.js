@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import NavbarHeader from './NavbarHeader';
+import Dashboard from './Dashboard';
+import SkillDetail from './SkillDetail'
 
 
 
@@ -8,22 +11,18 @@ class App extends Component {
     navThemeInverse: false
   }
 
-
-
   render() {
+
     return (
       <div>
-        <NavbarHeader inverse={this.state.navThemeInverse}/>
-        <button
-          onClick={() => this.setState({navThemeInverse: !this.state.navThemeInverse})}
-          className='nav-theme-toggle btn-primary'
-        >
-          Change my Nav
-        </button>
-        {this.props.children}
+        {this.props.focusedSkill ? <SkillDetail/> :<Dashboard />}
       </div>
     )
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return { focusedSkill: state.skill.focusedSkill}
+}
+
+export default connect(mapStateToProps)(App);

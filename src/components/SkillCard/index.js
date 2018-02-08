@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions'
 
 class SkillCard extends Component {
+  state = {
+    focus: false
+  }
 
   renderStyle() {
-    const { style, xPos, yPos } = this.props;
+    const { style, xPos, yPos, skill: { color } } = this.props;
 
     if (!style) {
       return {backgroundColor: '#fff'}
@@ -13,30 +18,33 @@ class SkillCard extends Component {
     const duration = String((dist + 1 * (dist)) + 2 );
     return {
       animationName: 'skillWave',
-      animationDuration: duration + 's'
+      animationDuration: duration + 's',
+      backgroundColor: color,
     }
   }
+
+  handleClick = () => {
+    this.props.setFocus(this.props.skill)
+  }
+
 
   render() {
     const { skillName } = this.props.skill;
     console.log(this.props)
-    // const { skillName } = this.props.data;
+
     return (
       <div className='skill-card' style={this.renderStyle()}>
-        <h3>{ skillName }</h3>
-        <div>
-          <p>Inside div one</p>
-        </div>
-        <div>
-          <p>Inside div two</p>
-        </div>
-        <img></img>
+        <a onClick={this.handleClick}><h3>{ skillName }</h3></a>
       </div>
     )
   }
 }
 
-export default SkillCard;
+function mapStateToProps(state) {
+  return {}
+}
+
+export default connect(null, actions)(SkillCard);
 // .skill-card {
 //   padding: 10px;
 //   border-radius: 10%
