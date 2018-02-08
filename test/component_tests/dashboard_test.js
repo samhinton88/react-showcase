@@ -27,5 +27,9 @@ describe('Dashboard', () => {
 
   it('contains nine cards', () => {
     expect(component.find('.card').length).to.equal(9)
+  });
+
+  it('contains 9 SkillCards', () => {
+    expect(component.find('.skill-card').length).to.equal(9)
   })
 })

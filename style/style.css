@@ -1,3 +1,8 @@
+@keyframes example {
+    from {background-color: #6282ab;}
+    to {background-color: #fafafa;}
+}
+
 body {
     padding-top: 50px
 }
@@ -14,6 +19,7 @@ a {
 
 .dashboard {
   background-color: #fafafa;
+  display: grid;
 }
 
 .dashboard-main {
@@ -22,4 +28,9 @@ a {
   grid-gap: 10px 10px;
   grid-template-columns: 20% 40% auto;
   grid-template-rows: 10% 20% 40% auto;
+}
+
+
+.skill-card {
+  border-radius: 5px
 }
