@@ -23,7 +23,10 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return { focussedSkill: state.skill.focusedSkill}
+  return {
+    focussedSkill: state.skill.focusedSkill,
+    userNarrative: state.userNarrative
+  }
 }
 
 export default connect(mapStateToProps)(App);

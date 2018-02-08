@@ -4,7 +4,23 @@ import * as actions from '../../actions'
 
 class SkillCard extends Component {
   state = {
-    focus: false
+    shouldWiggle: false
+  }
+
+  componentDidMount() {
+    if (this.props.skill.skillName === 'React') {
+      this.wiggleTimer = setTimeout(() => {
+        this.setState({shouldWiggle: true})
+      },
+      10000)
+
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.wiggleTimer) {
+      clearTimeout(this.wiggleTimer)
+    }
   }
 
   renderStyle() {
@@ -12,6 +28,14 @@ class SkillCard extends Component {
 
     if (!style) {
       return {backgroundColor: '#fff'}
+    }
+
+    if (this.state.shouldWiggle) {
+      return {
+        animationName: 'wiggle',
+        animationDuration: '0.5s',
+        backgroundColor: color
+      }
     }
 
     const dist = xPos + yPos;
@@ -24,7 +48,8 @@ class SkillCard extends Component {
   }
 
   handleClick = () => {
-    this.props.setFocus(this.props.skill)
+    this.props.setFocus(this.props.skill);
+    this.props.updateUserNarrative(this.props.skill);
   }
 
 
@@ -44,10 +69,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(null, actions)(SkillCard);
-// .skill-card {
-//   padding: 10px;
-//   border-radius: 10%
-//   background-color: red;
-//   animation-name: example;
-//   animation-duration: 4s;
-// }

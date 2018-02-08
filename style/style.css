@@ -1,9 +1,11 @@
 @keyframes skillWave {
     10% {background-color: #deecf9;}
-
     50% {background-color: #8db6e0;}
+}
 
-    /*100% {background-color: #2e70ad;}*/
+@keyframes skillWaveReact {
+    10% {background-color: #deecf9;}
+    50% {background-color: #8db6e0;}
 }
 
 @keyframes fadeIn {
@@ -16,6 +18,16 @@
   to { grid-column 1 / 3}
 }
 
+@keyframes wiggle {
+  20% {transform: rotate(2deg);}
+  40% {transform: rotate(-2deg);}
+  60% {transform: rotate(2deg);}
+  80% {transform: rotate(-2deg);}
+
+  /*100% {transform: rotate(());}*/
+
+}
+
 body {
   padding-top: 50px;
   color: white;
@@ -25,7 +37,6 @@ body {
 .navbar-nav {
   flex-direction: row;
   margin-right: 5px;
-
 }
 
 a {
@@ -55,9 +66,7 @@ a {
 }
 
 .skill-card:hover {
-
-  box-shadow: 2px 2px #f1f1f1;
-  transition: 1s;
+  /*animation: spin !important;*/
 }
 
 .focus-item {

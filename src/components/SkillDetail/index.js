@@ -10,8 +10,8 @@ class SkillDetail extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { skillName, color, tagLine } = this.props.skill
+
     return (
       <div className='skill-detail' style={
         {
