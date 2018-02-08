@@ -1,5 +1,5 @@
 const data = [
-  {skillName: 'Rails', color: '#a2282d'},
+  {skillName: 'Rails', color: '#a2282d', tagLine: 'Rapid prototyping in eloquent Ruby'},
   {skillName: 'MongoDB', color: '#479949'},
 
   {skillName: 'Express', color: '#f6dd3b'},

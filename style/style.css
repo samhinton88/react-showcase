@@ -27,8 +27,6 @@ a {
   color: darkgrey;
 }
 
-
-
 .dashboard-main {
   display: grid;
   grid-gap: 10px 10px;
@@ -58,5 +56,12 @@ a {
 }
 
 .skill-detail {
-  background-color: red
+  background-color: red;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.skill-detail-main {
+  display: grid;
+
 }
