@@ -8,6 +8,5 @@ import Dashboard from './components/Dashboard'
 export default (
     <Route path="/" component={App}>
       <Route path="home" component={LandingArea} />
-      <Route path="dashboard" component={Dashboard} />
     </Route>
 );
