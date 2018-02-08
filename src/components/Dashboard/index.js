@@ -33,7 +33,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className='dashboard'>
-        <h2 style={{color: 'black'}}>Dashboard {'<'}- don't worry, I'm getting rid of this</h2>
+
         <div className='dashboard-main'>
           {this.renderSkillCards()}
         </div>

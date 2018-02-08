@@ -79,14 +79,18 @@ a {
     grid-template-areas:
       "hd hd hd hd   hd   hd   hd   hd   hd"
       "sd sd sd main main main main main main"
-      "sd sd sd  ft  ft   ft   ft   ft   ft";
+      "sd sd sd main main main main main main";
 }
 
 .skill-detail-main-head {
   grid-area: hd;
 }
 
-.skill-detail-main-body {
-  grid-area:;
+.skill-detail-main-side {
+  grid-area: sd;
+}
+
+.skill-detail-main-content {
+  grid-area: main;
 }
 

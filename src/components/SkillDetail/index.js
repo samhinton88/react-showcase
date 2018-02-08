@@ -28,8 +28,11 @@ class SkillDetail extends Component {
           <div className='skill-detail-main-head'>
             <p>{tagLine}</p>
           </div>
-          <div>
-
+          <div className='skill-detail-main-side'>
+            Inside skill-detail-main-body
+          </div>
+          <div className='skill-detail-main-content'>
+            Inside skill-detail-main-content'
           </div>
 
         </div>
