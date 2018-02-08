@@ -1,5 +1,5 @@
 {
-  "name": "verve-showcase",
+  "name": "react-showcase",
   "version": "1.0.0",
   "description": "Showcase of React, React-Redux, testing competency.",
   "main": "index.js",

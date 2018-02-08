@@ -6,9 +6,8 @@ import data from './db';
 class Dashboard extends Component {
   state = {
     skillData: data,
-    focusItem: null
+    focusItem: null,
   }
-
 
   renderSkillCards() {
     const skillCards = this.state.skillData.map((skill, index) => {
@@ -29,13 +28,12 @@ class Dashboard extends Component {
     });
 
     return skillCards
-
   }
 
   render() {
     return (
       <div className='dashboard'>
-        <h2 style={{color: 'black'}}>Dashboard</h2>
+        <h2 style={{color: 'black'}}>Dashboard {'<'}- don't worry, I'm getting rid of this</h2>
         <div className='dashboard-main'>
           {this.renderSkillCards()}
         </div>

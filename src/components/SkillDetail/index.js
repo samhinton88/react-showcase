@@ -18,8 +18,10 @@ class SkillDetail extends Component {
           <h1>{ skillName }</h1>
         </div>
         <div className='skill-detail-main'>
+          <div className='skill-detail-main-head'>
+            <p>{tagLine}</p>
+          </div>
 
-          <p>{tagLine}</p>
         </div>
       </div>
     )
