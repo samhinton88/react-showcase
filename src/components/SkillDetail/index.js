@@ -13,13 +13,23 @@ class SkillDetail extends Component {
     console.log(this.props)
     const { skillName, color, tagLine } = this.props.skill
     return (
-      <div className='skill-detail' style={{backgroundColor: color}} onClick={this.handleClick}>
+      <div className='skill-detail' style={
+        {
+          backgroundColor: color,
+          animation: 'fadeIn',
+          animationDuration: '1s'
+        }
+      }
+      onClick={this.handleClick}>
         <div className='skill-detail-top'>
           <h1>{ skillName }</h1>
         </div>
         <div className='skill-detail-main'>
           <div className='skill-detail-main-head'>
             <p>{tagLine}</p>
+          </div>
+          <div>
+
           </div>
 
         </div>
