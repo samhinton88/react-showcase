@@ -30,7 +30,6 @@ class SkillCard extends Component {
 
   render() {
     const { skillName } = this.props.skill;
-    console.log(this.props)
 
     return (
       <div className='skill-card' style={this.renderStyle()}>

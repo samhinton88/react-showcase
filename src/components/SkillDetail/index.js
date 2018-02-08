@@ -8,12 +8,12 @@ class SkillDetail extends Component {
     return (
       <div className='skill-detail'>
         <div className='skill-detail-top'>
-          { skillName }
+          <h1>{ skillName }</h1>
         </div>
         <div className='skill-detail-main'>
 
-        </div>
         SkillDetail
+        </div>
       </div>
     )
   }

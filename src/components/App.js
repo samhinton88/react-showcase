@@ -13,7 +13,6 @@ class App extends Component {
 
   render() {
     const { focussedSkill } = this.props
-    console.log(!this.props.focussedSkill)
 
     return (
       <div>
