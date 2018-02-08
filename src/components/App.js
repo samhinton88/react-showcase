@@ -12,17 +12,19 @@ class App extends Component {
   }
 
   render() {
+    const { focussedSkill } = this.props
+    console.log(!this.props.focussedSkill)
 
     return (
       <div>
-        {this.props.focusedSkill ? <SkillDetail/> :<Dashboard />}
+        {focussedSkill ? <SkillDetail skill={focussedSkill}/> :<Dashboard />}
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { focusedSkill: state.skill.focusedSkill}
+  return { focussedSkill: state.skill.focusedSkill}
 }
 
 export default connect(mapStateToProps)(App);
