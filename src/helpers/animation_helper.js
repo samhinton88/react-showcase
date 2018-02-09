@@ -28,6 +28,12 @@ export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
       case 'swipe-left':
         distanceFromOrigin = Math.abs(xPos - gridWidth)
         break;
+      case 'swipe-right':
+        distanceFromOrigin = xPos
+        break;
+      case 'swipe-up':
+        distanceFromOrigin = Math.abs(yPos - (range / gridWidth));
+        break;
     }
 
     return (
