@@ -109,3 +109,7 @@ a {
   grid-area: main;
 }
 
+.word {
+  margin-left: 3px
+}
+
