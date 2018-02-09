@@ -15,7 +15,15 @@ class App extends Component {
     const { focussedSkill } = this.props
 
     return (
-      <div>
+      <div className='app'>
+      {`
+      keep formatting
+
+      keep spaces
+
+
+      keep spaces
+   `}
         {focussedSkill ? <SkillDetail skill={focussedSkill}/> :<Dashboard />}
       </div>
     )

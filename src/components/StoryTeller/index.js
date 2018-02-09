@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 class TypewriterChar extends Component {
 
   render() {
-    console.log('inside TypewriterChar')
-    console.log(this.props.style)
     return (
       <p style={this.props.style}>
         {this.props.content}
@@ -17,8 +15,6 @@ class TypewriterChar extends Component {
 
 class Word extends Component {
 
-
-
   renderChars = () => {
     const chars =  this.props.content.split('');
     const mappedChars = chars.map((char, i) => {
@@ -28,15 +24,11 @@ class Word extends Component {
         style =  {
             animationName: 'fadeIn',
             animationDuration: '1s',
-            animationDelay: `${i / 10}s`,
+            animationDelay: `${i / 20}s`,
             color: 'black',
             animationFillMode: 'both'
         }
-
       }
-
-
-
 
       return <TypewriterChar content={char} style={style} key={i}/>
     });
@@ -58,32 +50,22 @@ class Word extends Component {
 class StoryTeller extends Component {
 
   renderStory() {
-    const skillSeq = this.props.narrative.userNarrative.map((narrObj) => {
+    const skillSeq = this.props.narrative.userNarrative.map((narrObj, i) => {
       return (
-        {content: narrObj.skillName}
+        {content: narrObj.skillName, order: i}
       )
     })
 
-    let style;
+
 
     const story = skillSeq.map((skill, i) => {
-      if(i === skillSeq.length - 1) {
-        style = {
-          animationName: 'fadeIn',
-          animationDelay: `${i}s`,
-          animationDuration: '1s',
-          animationFillMode: 'both',
-          marginRight: '5px'
-        }
-      }
 
-      const content = skill
+      const content = 'then you went to ' + skill.content
 
       return (
         <Word
-          content={skill.content}
+          content={content}
           key={i}
-          style={style}
           postion={skill.postion}
           new={i === skillSeq.length - 1 ? true : false}
         />

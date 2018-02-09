@@ -38,7 +38,9 @@ body {
 a {
   color: darkgrey;
 }
-
+.app {
+  white-space: pre-wrap
+}
 
 .dashboard {
   /*display: grid;*/
