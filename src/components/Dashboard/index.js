@@ -17,7 +17,7 @@ class Dashboard extends Component {
       this.state.skillData,
       SkillCard,
       3,
-      'top-right'
+      'swipe-left'
     )
 
     return skillCards

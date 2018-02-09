@@ -1,8 +1,6 @@
 import React from 'react'
 
 export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
-  console.log(origin)
-
   const range = objects.length;
   const centerPointIndex = (range - 1) / 2;
   const topRightIndex = gridWidth - 1
@@ -20,10 +18,15 @@ export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
         distanceFromOrigin = Math.abs(xPos - gridWidth) + yPos;
         break;
       case 'center':
-        console.log('inside center switch in animation_helper')
         distanceFromOrigin =
           Math.abs(xPos - Math.floor(gridWidth / 2) ) +
           Math.abs(yPos - Math.floor(range / gridWidth / 2))
+        break;
+      case 'swipe-down':
+        distanceFromOrigin = yPos;
+        break;
+      case 'swipe-left':
+        distanceFromOrigin = Math.abs(xPos - gridWidth)
         break;
     }
 

@@ -59,7 +59,6 @@ class SkillCard extends Component {
 
 
   render() {
-    console.log(this.props)
     const { skillName } = this.props.data;
 
     return (
