@@ -34,8 +34,14 @@ export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
       case 'swipe-up':
         distanceFromOrigin = Math.abs(yPos - (range / gridWidth));
         break;
-      case 'walk':
+      case 'walk-down':
         distanceFromOrigin = index;
+        break;
+      case 'walk-up':
+        distanceFromOrigin =  Math.abs(index - range)
+        break;
+      case 'random':
+        distanceFromOrigin = Math.floor(Math.random() * range);
         break;
     }
 

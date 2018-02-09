@@ -47,6 +47,7 @@ a {
 .dashboard {
   display: grid
   grid-template-rows: 10% [main-start] 80% [main-end] 10%;
+  animation: fadeIn 1s;
 }
 
 .dashboard-main {
