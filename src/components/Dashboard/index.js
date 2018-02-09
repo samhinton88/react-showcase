@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SkillCard from '../SkillCard';
 import data from './db';
+import { gridWave } from '../../helpers/animation_helper';
+
+
 
 
 class Dashboard extends Component {
@@ -10,22 +13,12 @@ class Dashboard extends Component {
   }
 
   renderSkillCards() {
-    const skillCards = this.state.skillData.map((skill, index) => {
-
-      const xPos = index % 3;
-      const yPos = Math.floor(index / 3);
-
-      return (
-
-        <SkillCard
-          key={ index }
-          xPos={ xPos }
-          yPos={ yPos }
-          skill={ skill }
-          style={ true }
-        />
-      )
-    });
+    const skillCards = gridWave(
+      this.state.skillData,
+      SkillCard,
+      3,
+      'top-right'
+    )
 
     return skillCards
   }

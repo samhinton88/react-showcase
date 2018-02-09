@@ -4,16 +4,20 @@ import * as actions from '../../actions'
 
 class SkillCard extends Component {
   state = {
-    shouldWiggle: false
+    shouldWiggle: false,
   }
 
   componentDidMount() {
-    if (this.props.skill.skillName === 'React') {
+    if (this.props.userNarrative.userNarrative.includes(this.props.data)) {
+      this.setState({ shouldWiggle: false});
+      return
+    }
+
+    if (this.props.data.skillName === 'React') {
       this.wiggleTimer = setTimeout(() => {
-        this.setState({shouldWiggle: true})
+        this.setState({ shouldWiggle: true })
       },
       10000)
-
     }
   }
 
@@ -24,11 +28,12 @@ class SkillCard extends Component {
   }
 
   renderStyle() {
-    const { style, xPos, yPos, skill: { color } } = this.props;
 
-    if (!style) {
-      return {backgroundColor: '#fff'}
-    }
+    const {
+      distanceFromOrigin: dist,
+      data: { color },
+    } = this.props;
+
 
     if (this.state.shouldWiggle) {
       return {
@@ -38,7 +43,7 @@ class SkillCard extends Component {
       }
     }
 
-    const dist = xPos + yPos;
+
     const duration = String((dist + 1 * (dist)) + 2 );
     return {
       animationName: 'skillWave',
@@ -48,13 +53,14 @@ class SkillCard extends Component {
   }
 
   handleClick = () => {
-    this.props.setFocus(this.props.skill);
-    this.props.updateUserNarrative(this.props.skill);
+    this.props.setFocus(this.props.data);
+    this.props.updateUserNarrative(this.props.data);
   }
 
 
   render() {
-    const { skillName } = this.props.skill;
+    console.log(this.props)
+    const { skillName } = this.props.data;
 
     return (
       <div className='skill-card' style={this.renderStyle()}>
@@ -65,7 +71,8 @@ class SkillCard extends Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+
+  return { userNarrative: state.userNarrative }
 }
 
-export default connect(null, actions)(SkillCard);
+export default connect(mapStateToProps, actions)(SkillCard);
