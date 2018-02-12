@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 
 import Bulb from '../Bulb';
-import {A, S, square, line} from './map_helper'
+import {A, S, square, line, T, test} from './map_helper'
 
 class BulbScreen extends Component {
   state = {
-    char: square,
+    char: test,
   }
 
   renderBulbMap(mode = false) {
