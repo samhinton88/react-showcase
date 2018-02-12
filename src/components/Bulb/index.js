@@ -10,11 +10,10 @@ class Bulb extends Component {
       gridArea: gridPos,
       backgroundColor: backgroundColor
     }
-    console.log(style)
 
     return (
       <div className='bulb' style={style}>
-        {gridPos}
+        {this.props.mode ? gridPos : null}
       </div>
     )
   }

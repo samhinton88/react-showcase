@@ -2,15 +2,16 @@
 import React, { Component } from 'react';
 
 import Bulb from '../Bulb';
-import {A} from './map_helper'
+import {A, S, square, line} from './map_helper'
 
 class BulbScreen extends Component {
   state = {
-    char: A,
+    char: square,
   }
 
-  renderBulbMap() {
+  renderBulbMap(mode = false) {
     const gridWidth = 9;
+
 
 
     const {char} = this.state;
@@ -20,7 +21,6 @@ class BulbScreen extends Component {
     })
 
     let map = [];
-    console.log(stringMap)
 
     for (let i = 0; i < 81; i ++) {
       const xPos = i % gridWidth;
@@ -32,7 +32,7 @@ class BulbScreen extends Component {
       const lit = stringMap.includes(gridPos) ? true : false;
 
 
-      map.push(<Bulb gridPos={'pos' + gridPos} lit={lit} key={gridPos}/>)
+      map.push(<Bulb gridPos={'pos' + gridPos} lit={lit} key={gridPos} mode={mode}/>)
 
     }
 
@@ -46,7 +46,7 @@ class BulbScreen extends Component {
 
     return (
       <div className='bulb-screen'>
-        {this.renderBulbMap()}
+        {this.renderBulbMap(true)}
       </div>
     )
   }
