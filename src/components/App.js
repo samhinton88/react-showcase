@@ -4,6 +4,7 @@ import NavbarHeader from './NavbarHeader';
 import Dashboard from './Dashboard';
 import SkillDetail from './SkillDetail';
 import StoryTeller from './StoryTeller';
+import BulbScreen from './BulbScreen';
 
 
 
@@ -20,7 +21,8 @@ class App extends Component {
     return (
       <div className='app'>
 
-        {focussedSkill ? <SkillDetail skill={focussedSkill}/> :<Dashboard />}
+
+        <BulbScreen />
 
 
       </div>
@@ -28,6 +30,7 @@ class App extends Component {
   }
 }
 
+        // {focussedSkill ? <SkillDetail skill={focussedSkill}/> :<Dashboard />}
 function mapStateToProps(state) {
   return {
     focussedSkill: state.skill.focusedSkill,
