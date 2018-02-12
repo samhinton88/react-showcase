@@ -2,29 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavbarHeader from './NavbarHeader';
 import Dashboard from './Dashboard';
-import SkillDetail from './SkillDetail'
+import SkillDetail from './SkillDetail';
+import StoryTeller from './StoryTeller';
 
 
 
 class App extends Component {
   state = {
-    navThemeInverse: false
+    navThemeInverse: false,
   }
+
+
 
   render() {
     const { focussedSkill } = this.props
 
     return (
       <div className='app'>
-      {`
-      keep formatting
 
-      keep spaces
-
-
-      keep spaces
-   `}
         {focussedSkill ? <SkillDetail skill={focussedSkill}/> :<Dashboard />}
+
+
       </div>
     )
   }

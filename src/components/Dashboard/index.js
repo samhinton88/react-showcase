@@ -17,14 +17,26 @@ class Dashboard extends Component {
 
   renderSkillCards() {
     const { userNarrative: {userNarrative: narrative} } = this.props;
+    let mode;
 
-    const mode = narrative.length > 0 ? 'quiet' : 'top-left'
+    switch (narrative.length) {
+      default:
+        mode = 'quiet'; break;
+      case 0:
+        mode = 'top-left'; break;
+      case 3:
+        mode = 'center'; break;
+      case 5:
+        mode = 'walk-up'; break;
+    }
+    // const mode = narrative.length > 0 ? 'quiet' : 'top-left'
 
     const skillCards = gridWave(
       this.state.skillData,
       SkillCard,
       3,
-      mode
+      mode,
+      1
     )
 
     return skillCards

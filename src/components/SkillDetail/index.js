@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+import Word from '../Word';
+
 class SkillDetail extends Component {
 
 
@@ -10,7 +12,7 @@ class SkillDetail extends Component {
   }
 
   render() {
-    const { skillName, color, tagLine } = this.props.skill
+    const { skillName, color, tagLine, description } = this.props.skill
 
     return (
       <div className='skill-detail' style={
@@ -26,13 +28,13 @@ class SkillDetail extends Component {
         </div>
         <div className='skill-detail-main'>
           <div className='skill-detail-main-head'>
-            <p>{tagLine}</p>
+            <Word content={tagLine} new />
           </div>
           <div className='skill-detail-main-side'>
             Inside skill-detail-main-body
           </div>
           <div className='skill-detail-main-content'>
-            Inside skill-detail-main-content'
+            {description}
           </div>
 
         </div>

@@ -31,6 +31,7 @@ class SkillCard extends Component {
 
     const {
       distanceFromOrigin: dist,
+      duration,
       data: { color },
     } = this.props;
 
@@ -44,7 +45,7 @@ class SkillCard extends Component {
     }
 
 
-    const duration = String((dist + 1 * (dist)) + 2 );
+    // const duration = String((dist + 1 * (dist)) + 2 );
     return {
       animationName: 'skillWave',
       animationDuration: duration + 's',

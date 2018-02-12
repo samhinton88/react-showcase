@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
+export function gridWave(objects, Component, gridWidth, origin = 'top-left', speedMod = 1) {
   const range = objects.length;
   const centerPointIndex = (range - 1) / 2;
   const topRightIndex = gridWidth - 1
@@ -44,7 +44,9 @@ export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
         distanceFromOrigin = Math.floor(Math.random() * range);
         break;
     }
-
+    const duration = String(
+      ((distanceFromOrigin / (1/speedMod)) + speedMod * (distanceFromOrigin)) + (2 * speedMod)
+    );
     return (
       <Component
         key={ object.id }
@@ -52,6 +54,7 @@ export function gridWave(objects, Component, gridWidth, origin = 'top-left') {
         yPos={ yPos }
         distanceFromOrigin={ distanceFromOrigin }
         data={ object }
+        duration={duration}
       />
     )
   })

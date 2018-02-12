@@ -32,6 +32,8 @@ body {
   padding-top: 50px;
   color: white;
   background-color: #fafafa;
+/*  background-image: -webkit-linear-gradient(100deg, #a08c98 50%, #afacbc 50%);
+  background-repeat: no-repeat;*/
 }
 
 
@@ -39,7 +41,7 @@ a {
   color: darkgrey;
 }
 .app {
-  white-space: pre-wrap
+
 }
 
 .dashboard {
@@ -50,8 +52,8 @@ a {
 .dashboard-main {
   display: grid;
   grid-gap: 10px 10px;
-  grid-template-columns:  20% 40% auto;
-  grid-template-rows: 10% 20% 40%;
+  grid-template-columns:  auto auto auto;
+  grid-template-rows: auto auto auto;
   align-items: stretch;
   justify-items: stretch;
   grid-area: main;
@@ -109,9 +111,14 @@ a {
 
 .skill-detail-main-content {
   grid-area: main;
+  color: white;
+}
+
+.story-teller {
+  color: black;
 }
 
 .word {
-  margin-left: 3px
+  white-space: pre-wrap
 }
 
