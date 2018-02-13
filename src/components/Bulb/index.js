@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 
 class Bulb extends Component {
+  state = {
+    lit: this.props.lit,
+    classes: ''
+  }
+
+  renderClass = () => {
+    return 'bulb'
+  }
+
+  componentDidMount() {
+    this.setState({classes: 'bulb'})
+  }
 
   render() {
     const {lit, gridPos} = this.props
-    const backgroundColor = lit ? 'red' : 'white'
+    const backgroundColor = lit ? 'blue' : 'white'
+    const animationName = lit ? 'skillWave' : null
 
     const style = {
-      gridArea: gridPos,
-      backgroundColor: backgroundColor
+      backgroundColor,
+      animationName,
+      animationDuration: '4s'
     }
 
+
     return (
-      <div className='bulb' style={style}>
+      <div className={this.state.classes} style={style}>
         {this.props.mode ? gridPos : null}
       </div>
     )

@@ -109,7 +109,7 @@ function wVer(x, start = 0, size = null) {
   return writeLine([x,start], [x, finish])
 }
 
-export {A, S, writeLine, square, line, T, test};
+export {A, S, writeLine, square, line, T, test, C};
 
 
 
