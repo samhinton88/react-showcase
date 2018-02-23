@@ -18,7 +18,6 @@ describe('BulbScreen Helpers',() => {
     it.only('should render a diagonal line', () => {
       const start = [0,0];
       const finish = [8,8];
-
       assert(String(writeLine(start, finish)) ===
 
             String([[0,0], [1,1], [2,2], [3,3], [4,4], [5,5], [6,6], [7,7], [8,8] ]))

@@ -5,24 +5,33 @@ import Dashboard from './Dashboard';
 import SkillDetail from './SkillDetail';
 import StoryTeller from './StoryTeller';
 import BulbScreen from './BulbScreen';
+import ReactEye from './ReactEye';
 
 
 
 class App extends Component {
   state = {
-    navThemeInverse: false,
+    reactLogoRect: null
+  }
+
+  componentDidMount() {
+
+    this.setState({ reactLogoRect: this.inputElement.getBoundingClientRect()})
   }
 
 
 
+  /*clientRect={this.state.reactLogoRef ? this.state.reactLogoRef.getBoundingClientRect() : null}*/
   render() {
     const { focussedSkill } = this.props
 
     return (
       <div className='app'>
+        <ReactEye
+          inputRef={el => this.inputElement = el}
+          loc={this.state.reactLogoRect}
 
-
-        <BulbScreen />
+        />
 
 
       </div>
@@ -31,6 +40,7 @@ class App extends Component {
 }
 
         // {focussedSkill ? <SkillDetail skill={focussedSkill}/> :<Dashboard />}
+
 function mapStateToProps(state) {
   return {
     focussedSkill: state.skill.focusedSkill,

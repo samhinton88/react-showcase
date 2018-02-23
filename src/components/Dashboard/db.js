@@ -3,7 +3,7 @@ const data = [
   {id: 2, skillName: 'MongoDB', color: '#479949', tagLine: 'NoSQL magic', description: 'Superfast database solution that implements the document system. Designed to be used with non-relational data (though you can rig it to work that way as well). In building this site I modeled myself in one document ;)'},
 
   {id: 3, skillName: 'Express', color: '#f6dd3b', tagLine: 'RESTful servers and summer strolls', description: 'Rapidly develop servers and manage asynchronus controller actions'},
-  {id: 4, skillName: 'GraphQL', color: '#df1797', tagLine: 'Querying with a sharp knife', description: 'A brilliant tool which allows a developer to take data from a number of remote sources and reorganise it into bespoke queries'},
+  {id: 4, skillName: 'GraphQL', color: '#df1797', tagLine: 'Querying with a sharp knife', description: 'A brilliant tool which allows a developer to take data from a number of remote sources and reorganise it into bespoke queries', keyWords: ['Apollo']},
   {id: 5, skillName: 'Mongoose', color: '#880309', tagLine: 'Makes my Node and my Mongo play together (just don\'t read the docs)', description: 'An ORM for use with MongoDB, you can use it with a number of languages'},
 
   {id: 6, skillName: 'Python', color: '#5ea58d', tagLine: 'Data and language analytics', description: ''},

@@ -16,8 +16,9 @@ class Bulb extends Component {
 
   render() {
     const {lit, gridPos} = this.props
+
     const backgroundColor = lit ? 'blue' : 'white'
-    const animationName = lit ? 'skillWave' : null
+    const animationName = lit ? 'fadeIn' : null
 
     const style = {
       backgroundColor,
