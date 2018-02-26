@@ -11,19 +11,40 @@ import ReactEye from './ReactEye';
 
 class App extends Component {
   state = {
-    reactLogoRect: null
+    reactLogoRect: null,
+    windowDimensions: { width: 0, height: 0}
   }
 
   componentDidMount() {
 
     this.setState({ reactLogoRect: this.inputElement.getBoundingClientRect()})
+    window.addEventListener('resize', () => {
+
+
+      this.setState({
+        windowDimensions: { width: window.innerWidth, height: window.innerHeight },
+        reactLogoRect: this.inputElement.getBoundingClientRect()
+      })
+    })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setState({
+      windowDimensions: { width: window.innerWidth, height: window.innerHeight }
+    }) )
   }
 
 
 
+  handleResize() {
+    this.setState({ reactLogoRect: this.inputElement.getBoundingClientRect()})
+  }
+
   /*clientRect={this.state.reactLogoRef ? this.state.reactLogoRef.getBoundingClientRect() : null}*/
   render() {
-    const { focussedSkill } = this.props
+    const { focussedSkill } = this.props;
+
+
 
     return (
       <div className='app'>
