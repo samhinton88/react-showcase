@@ -2,73 +2,62 @@ import React, { Component } from 'react';
 
 import Pupil from './Pupil';
 import Lid from './Lid';
-
+import helpers from '../../helpers/react_eye_helpers';
 
 
 class ReactEye extends Component {
   state = {
-    pupilPosX: 50,
-    pupilPosY: 50,
+    anchorPosition: { x: 50, y: 50},
     awake: true,
     wakingUp: false,
-    watching: true,
-    wandering: true,
+    watching: false,
+    wandering: false,
+    pupilData: { cx: 50, cy: 50, rx: 3, ry: 3 },
     lidMidData: { cx: 50, cy: 50, rx: 20, ry: 7 },
     lidLeftData: { cx: 50, cy: 50, rx: 20, ry: 7 },
     lidRightData: { cx: 50, cy: 50, rx: 20, ry: 7 },
+
   }
 
-  stepTowards(pos) {
+  track = helpers.track;
+  stepTowards = helpers.stepTowards;
+  journeyTowards = helpers.journeyTowards;
+
+  componentDidMount() {
+    if (this.props.wandering) {
+      const wanderTimer = setInterval(
+        () => {
+          this.journeyTowards({
+            x: Math.floor(Math.random() * 100 + 1),
+            y: Math.floor(Math.random() * 100 + 1)
+          })
+        }, 5000
+      );
+    }
   }
 
-
-
+  componentWillUnmount() {
+    clearTimeout(this.wanderTimer);
+  }
 
   onMouseMove = (e) => {
     if (this.state.watching) {
-      const { left, top, right, bottom, height, width } = this.props.loc;
-
       const { clientX, clientY } = e;
+      const { left, top, height, width } = this.props.loc;
+
       const {
-        pupilPosX,
-        pupilPosY,
+        pupilData,
         lidRightData,
         lidMidData,
         lidLeftData
       } = this.state;
 
 
-      const gposX = 100 * (clientX) / (width) ,
+      const gposX = 100 * (clientX - left) / (width) ,
             gposY = 100 * (clientY - top) / (height);
 
-      console.log("gposx and y ", gposX, gposY)
-      console.log("clientX clientY", clientX, clientY)
-      console.log("left right", left, right)
-
-
-
-      const glanceDistanceX = (gposX - 50) / 6
-      const glanceDistanceY = (gposY - 50) / 16
-      const glanceX = 50 + glanceDistanceX
-      const glanceY = 50 + glanceDistanceY
-      console.log("width height",width, height)
-      console.log("glances",glanceDistanceX, glanceDistanceY)
-
-      const strainX = (gposX - 50) / 18;
-      const strainY = (gposY - 50) / 18;
-
-      lidLeftData.cy = 50 + strainX;
-      lidRightData.cy = 50 - strainX;
-      lidLeftData.cx = 50 - strainY;
-      lidRightData.cx = 50 + strainY;
-
-      this.setState({
-        pupilPosX: glanceX,
-        pupilPosY: glanceY,
-        lidRightData,
-        lidLeftData })
-    };
-
+      this.track({ x: gposX, y: gposY });
+    }
   }
 
 
@@ -80,47 +69,25 @@ class ReactEye extends Component {
     const { watching } = this.state;
 
     this.setState({ watching: !watching })
-  }
-
-  wanderToggle = () => {
-    let wandering = true;
-
-    while(wandering) {
-      const point = {
-        x: Math.floor(Math.random() * 100 + 1),
-        y: Math.floor(Math.random() * 100 + 1)
-      };
-
-      const pupilTerminusX = 50 + (point.x - 50) / 10;
-      const pupilTerminusY = 50 + (point.y - 50) / 16;
-      const strainTerminusX = 50 + (point.x - 50) / 18;
-      const strainTerminusY = 50 + (point.y - 50) /18;
-
-      this.stepTo(point);
-
-    }
-
-    this.setState({ wandering: !wandering })
 
   }
 
   renderEye() {
     const {
-      pupilPosX,
-      pupilPosY,
+      pupilData,
       lidMidData,
       lidLeftData,
       lidRightData
     } = this.state;
 
     if (this.state.wakingUp) {
-      const styleDataRight = {
+      const styleDataLeft = {
         style: { animationName: 'wake-two', animationDuration: '2s', animationFillMode: 'forwards' },
         stroke: "black",
         fill: "none"
       };
 
-      const styleDataLeft = {
+      const styleDataRight = {
         style: { animationName: 'wake-one', animationDuration: '2s', animationFillMode: 'forwards' },
         stroke: "black",
         fill: "none"
@@ -135,7 +102,7 @@ class ReactEye extends Component {
       return(
         <svg viewBox="0 0 100 100">
           <Pupil
-            pos={{x: pupilPosX, y: pupilPosY}}
+            geometry={pupilData}
           />
           <Lid
             geometry={lidRightData}
@@ -157,7 +124,6 @@ class ReactEye extends Component {
       return (
         <svg viewBox="0 0 100 100">
           <ellipse cx="50" cy="50" rx="20" ry="7" stroke="black" fill="black"/>
-
         </svg>
       )
     }
@@ -165,7 +131,7 @@ class ReactEye extends Component {
     return (
       <svg viewBox="0 0 100 100">
           <Pupil
-            pos={{x: pupilPosX, y: pupilPosY}}
+            geometry={pupilData}
           />
           <Lid
             className="one"
@@ -183,15 +149,11 @@ class ReactEye extends Component {
   }
 
   render() {
-
-
     return (
-      <div ref={this.props.inputRef}>
+      <div >
         <button onClick={this.wakeUp}>wake</button>
         <button onClick={this.watchToggle}>toggle watching</button>
-        <button onClick={this.wanderToggle}>toggle wandering</button>
-
-        <div className="react-eye" onMouseMove={this.onMouseMove}>
+        <div ref={this.props.inputRef} className="react-eye" onMouseMove={this.onMouseMove}>
           {this.renderEye()}
         </div>
       </div>

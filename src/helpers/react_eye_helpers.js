@@ -1,36 +1,72 @@
-const stepTowards = function(destination, step = 0.01) {
-  const {position} = this;
-  // console.log('start position ',position);
-  const xDir = position.x < destination.x ? 1 : -1;
-  const yDir = position.y < destination.y ? 1 : -1;
-  const xDistToDest = Math.abs(position.x - destination.x);
-  // console.log('x distance to dest', xDistToDest);
-  const yDistToDest = Math.abs(position.y - destination.y);
-  // console.log('y distance to dest', yDistToDest);
-  const xStep = xDistToDest * (xDir * step);
-  const yStep = yDistToDest * (yDir * step);
-  position.x += xStep;
-  position.y += yStep;
-  // console.log('finish position ', position);
+const stepTowards = function(destination, step = 0.1) {
+
+  const { anchorPosition } = this.state;
+  const xDir = anchorPosition.x < destination.x ? 1 : -1;
+  const yDir = anchorPosition.y < destination.y ? 1 : -1;
+  const xDistToDest = Math.abs(anchorPosition.x - destination.x);
+  const yDistToDest = Math.abs(anchorPosition.y - destination.y);
+  const xStep = xDir * step;
+  const yStep = yDir * step;
+  anchorPosition.x += xStep;
+  anchorPosition.y += yStep;
+
+  this.track(anchorPosition)
 
 }
 
-const trackTowards = function(destination, step = 0.01) {
-  console.log('start', this.position)
+const journeyTowards = function(destination, step = 0.01) {
   let count = 0
+  let timeOut;
   while(
-    Math.ceil(this.position.x) != destination.x &&
-    Math.ceil(this.position.y) != destination.y
-  ) {
-    this.stepTowards(destination);
+    (Math.floor(this.state.anchorPosition.x) !== Math.floor(destination.x) &&
+     Math.floor(this.state.anchorPosition.y) !== Math.floor(destination.y)) &&
+    count < 1000
+  )
+  {
+    timeOut = setTimeout(
+      () => {
+        this.stepTowards(destination)
+      },
+      100
+      )
+    ;
     count += 1
-    if (count % 5 === 0) { console.log(`step ${count}`, this.position)}
-    this.track.push(this.position);
-
   }
-  console.log(count)
-  console.log(this.track[0], this.track[389])
-  console.log('finish', this.position)
+  clearTimeout(timeOut)
 }
 
-export default { stepTowards, trackTowards };
+// focus the react eye towards a point on its viewBox
+const track = function(coordinates) {
+  const {
+    pupilData,
+    lidRightData,
+    lidMidData,
+    lidLeftData
+  } = this.state;
+
+  const { x, y } = coordinates;
+
+  const glanceDistanceX = (x - 50) / 9
+  const glanceDistanceY = (y - 50) / 16
+  const glanceX = 50 + glanceDistanceX
+  const glanceY = 50 + glanceDistanceY
+
+  pupilData.cx = glanceX;
+  pupilData.cy = glanceY;
+
+  const strainX = (x - 50) / 18;
+  const strainY = (y - 50) / 18;
+  lidLeftData.cy = 50 + strainX;
+  lidRightData.cy = 50 - strainX;
+  lidLeftData.cx = 50 - strainY;
+  lidRightData.cx = 50 + strainY;
+  this.setState({
+    pupilData,
+    lidRightData,
+    lidLeftData })
+};
+
+
+
+
+export default { stepTowards, journeyTowards, track };

@@ -3,16 +3,17 @@ import React, { Component } from 'react';
 class Pupil extends Component {
 
   render() {
-    const { pos } = this.props;
+
+    const { geometry: { cx, cy, rx, ry } } = this.props;
 
 
     return (
       <ellipse
         className="pupil"
-        cx={pos.x}
-        cy={pos.y}
-        rx="3"
-        ry="3"
+        cx={cx}
+        cy={cy}
+        rx={rx}
+        ry={ry}
         stroke="black"
         fill="black"/>
     )
