@@ -129,7 +129,7 @@ class ReactEye extends Component {
     }
 
     return (
-      <svg viewBox="0 0 100 100">
+      <svg viewBox="0 0 100 100" >
           <Pupil
             geometry={pupilData}
           />

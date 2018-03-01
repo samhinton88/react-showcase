@@ -57,9 +57,9 @@
 
 
 body {
-  padding-top: 50px;
+
   color: white;
-  background-color: #fafafa;
+  background-color: white;
 /*  background-image: -webkit-linear-gradient(100deg, #a08c98 50%, #afacbc 50%);
   background-repeat: no-repeat;*/
 }
@@ -70,6 +70,20 @@ a {
 }
 .app {
 
+}
+
+.container {
+  margin: 0 auto;
+  width: 100vw;
+}
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .dashboard {
@@ -177,5 +191,24 @@ a {
 .two {
   transform: rotate(-55deg);
   transform-origin: 50px 50px
+}
+
+.rainbow2 {
+    background-image: -webkit-linear-gradient(left, #E0F8F7, #585858, #fff); /* For Chrome and Safari */
+    background-image:    -moz-linear-gradient(left, #E0F8F7, #585858, #fff); /* For old Fx (3.6 to 15) */
+    background-image:     -ms-linear-gradient(left, #E0F8F7, #585858, #fff); /* For pre-releases of IE 10*/
+    background-image:      -o-linear-gradient(left, #E0F8F7, #585858, #fff); /* For old Opera (11.1 to 12.0) */
+    background-image:         linear-gradient(to right, #E0F8F7, #585858, #fff); /* Standard syntax; must be last */
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.rainbow {
+
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 

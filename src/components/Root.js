@@ -1,7 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import routes from '../routes';
+import { Router, browserHistory, Route } from 'react-router';
+
+import ReactEyeApp from './ReactEyeApp';
+import App from './App';
+import ParakeatApp from './ParakeatApp';
 
 
 const Root = ({ store }) => {
@@ -9,7 +12,10 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={browserHistory}>
-        {routes}
+        <Route path="/" component={App} />
+        <Route path="reacteye" component={ReactEyeApp} />
+        <Route path="parakeat" component={ParakeatApp} />
+
       </Router>
     </Provider>
   );
