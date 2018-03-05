@@ -25,22 +25,25 @@ class ParakeatApp extends Component {
               backgroundSize: 'stretch',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'top center',
+              opacity: '0',
               backgroundImage: 'linear-gradient(-90deg, rgba(35,172,166,.85),rgba(255,255,255,0)), url(https://www.instock.nl/app/uploads/2016/07/RubendeRuijter_InstockDH-51_klein.jpg)',
               padding: '0',
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'flex-start',
+              justifyContent: 'space-between',
               opacity: '1',
-              paddingBottom: '30px',
-              paddingTop: '30px'
+              paddingBottom: '40px',
+              paddingTop: '40px',
+              paddingLeft: '20px'
+
             }
 
         }
 
         >
         <div
-          style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'column'}}
+          style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}
         >
           <div
             className='circle-logo-wrapper'
@@ -64,56 +67,26 @@ class ParakeatApp extends Component {
           >
             <ParakeatLogo watching mousePos={this.state.mousePos} elRef={(e) => this.parakeatPupil = e}/>
           </div>
+          </div>
+          <div>
             <h1
               style={
                 {
-                  textShadow: '2px 2px 1px rgba(0, 0, 0, .9)'
+                  textShadow: '2px 2px 1px rgba(0, 0, 0, .9)',
+                  marginRight: '20px'
                 }
               }
             >
               Parakeat
             </h1>
-          </div>
-
-
-
-        </div>
-
-
-        <div
-          className='divider full-width'
-          style={
-            {
-              background: 'linear-gradient(90deg, rgba(228, 222, 214, 0), rgba(128, 189, 158, .9), rgba(245, 240, 95, .9))',
-              marginTop: '20px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              height: '475px'
-            }
-          }
-        >
-        <div
-          style={
-              {
-                boxShadow: '1px 1px 2px black',
-                marginLeft: '20px',
-                backgroundImage: 'linear-gradient(-10deg, rgba(153, 171, 131, 0.1), url(../../assets/map_newcastle.png))',
-                width: '250px',
-                height: '400px'
-
-              }
-          }
-        >
-          <img src='../../assets/map_newcastle.png' />
-        </div>
-        <h2
+            <h2
             style={
               {
-                textShadow: '2px 2px 1px rgba(0, 0, 0, .8)',
-                color: 'white',
+                textShadow: '2px 2px 5px rgba(0, 0, 0, 1)',
+                color: 'rgba(250, 250, 250, .9)',
                 marginBottom: '20px',
                 marginTop: '20px',
+                marginLeft: '20px',
                 marginRight: '20px',
                 fontFamily: '"Courier New", Courier, monospace',
                 fontWeight: '400',
@@ -123,6 +96,42 @@ class ParakeatApp extends Component {
           >
             Dine off the beaten track
           </h2>
+
+          </div>
+
+        </div>
+
+
+        <div
+          className='divider full-width'
+          style={
+            {
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundImage: 'linear-gradient(101deg, rgba(35,172,166,.85)), url(../../assets/veg-big.jpeg)',
+              marginTop: '20px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'flex-start',
+              height: '472px'
+            }
+          }
+        >
+
+        <div
+          style={
+              {
+                boxShadow: '1px 1px 2px black',
+                marginRight: '150px',
+                backgroundImage: 'linear-gradient(-10deg, rgba(153, 171, 131, 0.1), url(../../assets/map_newcastle.png)',
+                width: '250px',
+                height: '400px'
+
+              }
+          }
+        >
+          <img src='../../assets/map_newcastle.png' />
+        </div>
 
 
 
@@ -151,5 +160,5 @@ class ParakeatApp extends Component {
     )
   };
 };
-
+//'linear-gradient(-90deg, rgba(35,172,166,.85),rgba(255,255,255,0)), url(https://www.instock.nl/app/uploads/2016/07/RubendeRuijter_InstockDH-51_klein.jpg)'
 export default ParakeatApp;
