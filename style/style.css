@@ -1,4 +1,5 @@
 @import url('./components/card.css');
+@import url('./components/avatar.css');
 
 @keyframes skillWave {
     0% {background-color: #deecf9;}
