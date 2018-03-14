@@ -1,5 +1,6 @@
 @import url('./components/card.css');
 @import url('./components/avatar.css');
+@import url('./components/banner.css');
 
 @keyframes skillWave {
     0% {background-color: #deecf9;}
@@ -221,4 +222,10 @@ a {
   height: 100px;
   background-color: white;
   color: black;
+}
+
+.wiggler {
+  animation: wiggle 2s;
+
+
 }
