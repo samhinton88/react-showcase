@@ -108,7 +108,7 @@ class ParakeatApp extends Component {
             {
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
-              backgroundImage: 'linear-gradient(101deg, rgba(35,172,166,.85)), url(../../assets/veg-big.jpeg)',
+              backgroundImage: 'linear-gradient(101deg, rgba(192, 88, 5, .51), rgba(35,172,166,.85)), url(../../assets/veg-big.jpeg)',
               marginTop: '20px',
               display: 'flex',
               justifyContent: 'flex-end',
