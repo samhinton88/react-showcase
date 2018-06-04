@@ -1,4 +1,5 @@
 .banner {
+  position: relative;
   background-size: cover;
   text-align: center;
   display: flex;
@@ -6,6 +7,13 @@
   justify-content: center;
   color: white;
   height: 100vh;
+  width: 100vw;
+  transition: 3s;
+  background-size: 200% auto;
+}
+
+.banner:hover {
+  background-position: right center;
 }
 
 .banner h1 {
@@ -16,9 +24,10 @@
 
 .banner p {
   font-size: 25px;
-  font-weight: lighter;
+
   color: rgb(225, 255, 255);
   opacity: 1;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 20px;
 }
+

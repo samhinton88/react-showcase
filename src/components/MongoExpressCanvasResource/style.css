@@ -1,0 +1,26 @@
+.mongo-express-canvas-resource {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.resource-name-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /*border-radius: 4px;*/
+  padding: 3px;
+  height: 30px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.resource-name-container > h3 {
+  font-size: 18px;
+}
+
+.change-name-input {
+  background-color: transparent;
+  border: none;
+}

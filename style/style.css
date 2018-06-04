@@ -61,11 +61,10 @@
 
 
 body {
-
+  margin: 0;
   color: black;
-  background-color: white;
-/*  background-image: -webkit-linear-gradient(100deg, #a08c98 50%, #afacbc 50%);
-  background-repeat: no-repeat;*/
+  background: white;
+
 }
 
 
@@ -77,8 +76,13 @@ a {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 0;
   width: 100vw;
+}
+
+.components-container {
+  margin: 0;
+  padding: 0;
 }
 
 .full-width {
@@ -181,10 +185,10 @@ a {
 }
 
 .react-eye {
-  color: black;
-  height: 70vh;
-  width: 70vh;
-  border: 1px solid gray;
+  color: white;
+  height: 200px;
+  width: 400px;
+
 
 }
 .one {
@@ -228,4 +232,8 @@ a {
   animation: wiggle 2s;
 
 
+}
+
+.call-to-action {
+  margin-top: 150px;
 }

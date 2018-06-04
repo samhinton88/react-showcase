@@ -6,7 +6,14 @@ import ReactEyeApp from './ReactEyeApp';
 import App from './App';
 import ParakeatApp from './ParakeatApp';
 import ComponentsApp from './ComponentsApp';
-
+import AdminPanel from './AdminPanel';
+import SignIn from './SignIn';
+import SignUpForm from './SignUpForm';
+import RequireAuth from './auth/require_auth';
+import Signout from './Signout';
+import FourCardSquare from './FourCardSquare';
+import ShowcaseFront from './ShowcaseFront';
+import MongoExpressCanvas from './MongoExpressCanvas';
 
 const Root = ({ store }) => {
 
@@ -17,7 +24,13 @@ const Root = ({ store }) => {
         <Route path="reacteye" component={ReactEyeApp} />
         <Route path="parakeat" component={ParakeatApp} />
         <Route path="components" component={ComponentsApp} />
-
+        <Route path="admin" component={RequireAuth(AdminPanel)} />
+        <Route path="signin" component={SignIn} />
+        <Route path="signup" component={SignUpForm} />
+        <Route path="signout" component={Signout}/>
+        <Route path='4square' component={FourCardSquare} />
+        <Route path='showcase' component={ShowcaseFront} />
+        <Route path='canvas' component={MongoExpressCanvas} />
       </Router>
     </Provider>
   );

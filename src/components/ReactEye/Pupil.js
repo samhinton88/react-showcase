@@ -4,7 +4,8 @@ class Pupil extends Component {
 
   render() {
 
-    const { geometry: { cx, cy, rx, ry } } = this.props;
+    const { geometry: { cx, cy, rx, ry }, stroke } = this.props;
+
 
 
     return (
@@ -14,8 +15,8 @@ class Pupil extends Component {
         cy={cy}
         rx={rx}
         ry={ry}
-        stroke="black"
-        fill="black"/>
+        stroke={stroke}
+        fill={stroke}/>
     )
   }
 }

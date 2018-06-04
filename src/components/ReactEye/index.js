@@ -11,7 +11,7 @@ class ReactEye extends Component {
     awake: true,
     wakingUp: false,
     watching: false,
-    wandering: false,
+    wandering: true,
     pupilData: { cx: 50, cy: 50, rx: 3, ry: 3 },
     lidMidData: { cx: 50, cy: 50, rx: 20, ry: 7 },
     lidLeftData: { cx: 50, cy: 50, rx: 20, ry: 7 },
@@ -41,7 +41,7 @@ class ReactEye extends Component {
   }
 
   onMouseMove = (e) => {
-    if (this.state.watching) {
+    if (this.props.watching) {
       const { clientX, clientY } = e;
       const { left, top, height, width } = this.props.loc;
 
@@ -80,6 +80,8 @@ class ReactEye extends Component {
       lidRightData
     } = this.state;
 
+    const { stroke } = this.props
+
     if (this.state.wakingUp) {
       const styleDataLeft = {
         style: { animationName: 'wake-two', animationDuration: '2s', animationFillMode: 'forwards' },
@@ -103,6 +105,7 @@ class ReactEye extends Component {
         <svg viewBox="0 0 100 100">
           <Pupil
             geometry={pupilData}
+            stroke={stroke}
           />
           <Lid
             geometry={lidRightData}
@@ -123,27 +126,28 @@ class ReactEye extends Component {
     if (!this.state.awake) {
       return (
         <svg viewBox="0 0 100 100">
-          <ellipse cx="50" cy="50" rx="20" ry="7" stroke="black" fill="black"/>
+          <ellipse cx="50" cy="50" rx="20" ry="7" stroke={stroke} fill="black"/>
         </svg>
       )
     }
 
     return (
-      <svg viewBox="0 0 100 100" >
+      <svg viewBox="0 0 100 100" style={{zIndex: 9}}>
           <Pupil
             geometry={pupilData}
+            stroke={stroke}
           />
           <Lid
             className="one"
             geometry={lidRightData}
-            styledata={{fill: 'none', stroke: 'black', style: null}}/>
+            styledata={{fill: 'none', stroke, style: null}}/>
           <Lid
             geometry={lidMidData}
-            styledata={{fill: 'none', stroke: 'black', style: null}}/>
+            styledata={{fill: 'none', stroke, style: null}}/>
           <Lid
             className="two"
             geometry={lidLeftData}
-            styledata={{fill: 'none', stroke: 'black', style: null}}/>
+            styledata={{fill: 'none', stroke, style: null}}/>
         </svg>
       )
   }
@@ -151,9 +155,7 @@ class ReactEye extends Component {
   render() {
     return (
       <div >
-        <button onClick={this.wakeUp}>wake</button>
-        <button onClick={this.watchToggle}>toggle watching</button>
-        <div ref={this.props.inputRef} className="react-eye" onMouseMove={this.onMouseMove}>
+        <div  ref={this.props.inputRef} className="react-eye" onMouseMove={this.onMouseMove}>
           {this.renderEye()}
         </div>
       </div>
@@ -161,4 +163,6 @@ class ReactEye extends Component {
   }
 }
 
+       // {<button onClick={this.wakeUp}>wake</button>
+       // }<button onClick={this.watchToggle}>toggle watching</button>
 export default ReactEye;

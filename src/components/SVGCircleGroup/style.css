@@ -1,0 +1,15 @@
+@keyframes wobble {
+  0% {transform: translateX(2px);}
+  20% {transform: translateX(-2px);}
+  40% {transform: translateX(2px);}
+  60% {transform: translateX(-2px);}
+  100% {transform: translateX(0px);}
+}
+/*squeeze ripple*/
+@keyframes squeeze-ripple {
+  0% {transform: scale(0.8);}
+  20% {transform: scale(1);}
+  40% {transform: scale(0.8);}
+  60% {transform: scale(0.9);}
+  100% {transform: scale(1);}
+}
