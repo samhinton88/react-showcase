@@ -1,0 +1,41 @@
+.breadcrumb-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.breadcrumb-nav-item {
+  background: #47b0e9;
+  color: white;
+  margin: 2px;
+  border-radius: 0 8px 8px 0;
+  padding: 3px;
+  /*transform: skew(20deg);*/
+  overflow: hidden;
+}
+
+.breadcrumb-root {
+  background: #1b7de1;
+  position: relative;
+}
+
+/*.breadcrumb-root:after {
+  content: '  ';
+  position: absolute;
+  left: 100%;
+  border: solid black;
+  border-color: black;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}*/
+.nested-prop-item {
+  background: transparent;
+  display: flex;
+}
+
+.nested-prop-item .name {
+  border-radius: 4px;
+  background: rgba(55, 200, 131, 1);
+}
+
+.object-viewer {
+  border: 1px dotted black;
+}

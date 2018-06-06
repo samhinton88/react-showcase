@@ -1,0 +1,70 @@
+.mongo-express-editor {
+  display: grid;
+  grid-template-columns: auto 3fr 1fr;
+}
+
+.nav-bar-left {
+  width: 50px;
+  background: rgba(35, 45, 59, 1);
+  transition: 0.5s;
+}
+/*
+.nav-bar-left:hover {
+  width: 100px;
+}*/
+
+.right-panel {
+  /*width: 200px;*/
+}
+
+.right-panel {
+
+}
+
+.nav-bar-top {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(35, 45, 59, 1);
+}
+
+
+.nav-left-small {
+  width: 50px;
+}
+
+.nav-left-large {
+  color: white;
+  width: 150px;
+}
+
+.salutation {
+  color: rgba(48, 205, 201, 1);
+  margin-right: 10px;
+  margin-top: 5px;
+  text-shadow: 1px 0 rgba(200, 200, 200, 0.4);
+  border: 1px solid rgba(48, 205, 201, 1);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 35px;
+  padding: 5px;
+  border-radius: 2px;
+  transition: 1s;
+}
+
+.salutation:hover {
+  box-shadow: inset 1px 1px 2px 2px rgba(48, 205, 201, 1);
+}
+
+.salutation > p {
+  margin: 0;
+}
+
+.logo-container {
+  width: 30px;
+  height: 30px;
+  background: white;
+  margin: 10px;
+}

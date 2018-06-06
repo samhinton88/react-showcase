@@ -3,25 +3,34 @@ import SVGCircleGroup from '../SVGCircleGroup';
 import MongoExpressCanvasMenu from '../MongoExpressCanvasMenu';
 import MongoExpressCanvasResource from '../MongoExpressCanvasResource';
 import inlineStyles from './inline_styles';
+import style from './style.css';
+import {createResource}  from './create_resource';
+import dummyResources from './dummy_resource';
+console.log(dummyResources)
 
 class MongoExpressCanvas extends Component {
   state = {
     dragging: false,
-    resourceIndex: 1,
-    menu: {top: 121, left: 214},
+    resourceIndex: 0,
+    menu: null,
     messages: [
-
+      {content: 'right-click this canvas to create a new resource', canvasPos: [700, 400] }
     ],
-    resources: [
-      {resourceIndex: 0, name: 'user', size: 100, canvasPos: [50, 50], colour: {r: 10, g: 10, b: 100}}
+    resources:
+      dummyResources
+    ,
+    colorArray: [
+      {r: 20, g: 200, b: 20}, {r: 20, g: 20, b: 200}, {r: 200, g: 20, b: 20}, {r: 2, g: 200, b: 20}
     ]
   }
+
+  createResource = createResource;
 
   renderResources = () => {
     const { resources } = this.state;
 
     return resources.map((resource, i) => {
-      const { name, resourceIndex } = resource;
+      const { name, resourceIndex, properties } = resource;
 
       return (
         <MongoExpressCanvasResource
@@ -29,16 +38,55 @@ class MongoExpressCanvas extends Component {
           circleData={resource}
           name={name}
           onNameChangeSubmit={this.handleNameChangeSubmit}
+          reorder={this.reorder}
           resourceIndex={resourceIndex}
+          reposition={this.reposition}
+          properties={properties}
         />
       )
     })
   }
 
-  handleNameChangeSubmit = (e) => {
-    console.log(e.target.value);
-    console.log(e);
-    e.preventDefault()
+  reorder = (resourceIndex) => {
+    // ensure stacking context of resources puts active component at the top
+    const { resources } = this.state;
+
+    const candidate = resources.find((resource) => {
+      return resource.resourceIndex === resourceIndex
+    });
+
+    const index = resources.indexOf(candidate);
+
+    const newResources = [
+      ...resources.slice(0, index),
+      ...resources.slice(index + 1)
+    ];
+
+    this.setState({resources: [...newResources, candidate]})
+  }
+
+  reposition = (resourceIndex, newPosition) => {
+    const { resources } = this.state;
+    const { clientX, clientY} = newPosition;
+
+    const candidate = resources.find((resource) => {
+      return resource.resourceIndex === resourceIndex
+    })
+
+    const index = resources.indexOf(candidate);
+
+    const updatedResource = { ...candidate,  canvasPos: [clientX, clientY]  };
+
+    const newResources = [
+      ...resources.slice(0, index),
+      ...resources.slice(index + 1)
+    ];
+
+
+
+    this.setState({
+      resources: [...newResources, updatedResource ]
+    })
   }
 
   renderMenu = () => {
@@ -50,56 +98,37 @@ class MongoExpressCanvas extends Component {
       <MongoExpressCanvasMenu
         top={top}
         left={left}
-        options={[{label: 'new', cb: this.createResource }]}
+        options={[{label: 'new', cb: this.createResource.bind(this) }]}
       />
     )
   }
 
-  createResource = (data) => {
-    const {resources, menu: {left, top}} = this.state;
-    let { resourceIndex } = this.state;
-    // menu: left, top is the position user is attempting to insert component
-    let candidateLeft = left, candidateTop = top;
-    let xNudge = 0, yNudge = 0;
-    resources.forEach((resource) => {
-      const { canvasPos, name } = resource;
-      console.log('menu candidate',[candidateLeft, candidateTop], 'possible clash', name, canvasPos)
-      const xTooClose = Math.abs(candidateLeft - canvasPos[0]) < 20;
-      const yTooClose = Math.abs(candidateTop - canvasPos[1]) < 20;
+  renderMessages = () => {
+    const { messages } = this.state;
+    return messages.map((message, i) => {
+      const { content, canvasPos: [left, top] } = message;
 
-      const toLeft = Math.sign((candidateLeft - canvasPos[0]) === 1) ? true : false;
-      const toBottom = Math.sign((candidateTop - canvasPos[1]) === 1) ? true : false;
-
-      if (toLeft  &&  xTooClose) {
-        console.log('adjusting left from ', resource)
-        xNudge += -130;
-      }
-
-      if (!toLeft && xTooClose) {
-        console.log('adjusting right from ', resource)
-        xNudge += 130;
-      }
-
-      if (toBottom && yTooClose) {
-        console.log('adjusting down from ', resource)
-        yNudge += 130;
-      }
-
-      if (!toBottom && yTooClose) {
-        console.log('adjusting up from ', resource)
-        yNudge += -130;
-      }
-
-      candidateLeft += xNudge;
-      candidateTop += yNudge;
-    });
-    console.log('X changed from', left, 'to', candidateLeft)
-    console.log('Y changed from', top, 'to', candidateTop)
-
-    resourceIndex++
-
-    const _resources = [...resources, { resourceIndex, name: `resource${resourceIndex}`, size: 100, canvasPos: [candidateLeft, candidateTop], colour: {r: 10, g: 10, b: 100}}]
-    this.setState({resources: _resources, resourceIndex})
+      return (
+        <div
+          key={`message${i}`}
+          className='canvas-message-container'
+          style={
+            {
+              position: 'absolute',
+              top,
+              left,
+              background: 'rgba(30, 30, 30, 0.8)',
+              // border: '1px solid rgba(50, 50, 50, 0.8)',
+              boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)',
+              color: 'white',
+              textAlign: 'center',
+              borderRadius: '7px'}
+          }
+        >
+          {content}
+        </div>
+      )
+    })
   }
 
   handleClick = () => {
@@ -117,7 +146,7 @@ class MongoExpressCanvas extends Component {
   }
 
   render() {
-    console.log(this.state.resources)
+    console.log(this)
 
     return (
       <div
@@ -125,9 +154,12 @@ class MongoExpressCanvas extends Component {
         onContextMenu={this.handleContextMenu}
         className='mongo-express-canvas'
         style={inlineStyles}
+
+        onDragOver={(e) => e.preventDefault()}
       >
         {this.renderResources()}
         {this.renderMenu()}
+        {this.renderMessages()}
 
       </div>
     )

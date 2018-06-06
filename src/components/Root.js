@@ -14,6 +14,8 @@ import Signout from './Signout';
 import FourCardSquare from './FourCardSquare';
 import ShowcaseFront from './ShowcaseFront';
 import MongoExpressCanvas from './MongoExpressCanvas';
+import MongoExpressEditor from './MongoExpressEditor';
+import ObjectModeler from './ObjectModeler';
 
 const Root = ({ store }) => {
 
@@ -31,6 +33,8 @@ const Root = ({ store }) => {
         <Route path='4square' component={FourCardSquare} />
         <Route path='showcase' component={ShowcaseFront} />
         <Route path='canvas' component={MongoExpressCanvas} />
+        <Route path='editor' component={MongoExpressEditor} />
+        <Route path='modeler' component={ObjectModeler} />
       </Router>
     </Provider>
   );

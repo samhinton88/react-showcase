@@ -26,5 +26,5 @@ if (token) {
 
 ReactDOM.render(
   <Root store={store} />,
-  document.querySelector('.container')
+  document.querySelector('.root')
 );

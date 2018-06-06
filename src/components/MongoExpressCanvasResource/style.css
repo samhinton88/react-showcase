@@ -1,10 +1,13 @@
 .mongo-express-canvas-resource {
-  width: 200px;
-  height: 200px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 50%;
+}
+
+.mongo-express-canvas-resource:hover {
+  /*background-color: grey;*/
 }
 
 .resource-name-container {
@@ -23,4 +26,35 @@
 .change-name-input {
   background-color: transparent;
   border: none;
+}
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 20px;
+  color: #2E3D48;
+  animation: 1s blink step-end infinite;
+}
+
+.resource-head {
+  display: flex;
+
+}
+
+.resource-head-menu-container {
+  border-radius: 10px;
+  background-color: transparent;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
 }
